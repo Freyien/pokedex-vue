@@ -1,0 +1,184 @@
+#pokedex {
+    color: #FFF;
+}
+
+/* Pokemon List */
+#pokemon-list {
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    padding: 30px 20px 20px 30px;
+}
+
+ul.poke-cards{
+    list-style: none;
+    margin: 0;
+    padding: 0 !important;
+    height: calc(100% - 35px);
+    overflow: auto;
+}
+
+.poke-cards li {
+    display: inline-block;
+    padding: 5px 10px 0 0;
+}
+
+.poke-cards li > div{
+    border-radius: 20px;
+    padding: 10px;
+    display: flow-root;
+    cursor: pointer;
+    box-shadow: 2px 2px 5px #ccc;
+    opacity: 1;
+}
+
+
+.badge {
+    padding: 10px;
+}
+
+.bg-pokeball {
+    opacity: .2;
+    top: 30px;
+    height: 150px;
+}
+
+.img-pokemon {
+    position: absolute; 
+    right: 15px;
+    height: 140px;
+    width: 140px;
+}
+
+#pokemon-detail {
+    position:fixed;
+    top:0; 
+    right:0; 
+    bottom:0;
+    overflow-y: auto;
+}
+
+.pokemon-header {
+    height: 330px;
+    padding: 15px;
+}
+
+.tabs-content {
+    background: #FFF; 
+    border-radius: 60px 60px 0 0; 
+    padding: 70px 20px 20px 20px;
+    min-height: calc(100vh - 330px);
+    box-shadow: 2px 0 5px #222;
+}
+
+/* Pokemon Detail */
+#pokemon-detail .img-pokemon-high {
+    position: relative; 
+    top: 15px;
+    height: 250px;
+}
+
+.evolution-reason {
+    margin: 0 5px;
+    width: calc(100% - 220px);
+    text-align: center;
+}
+
+
+/* Colors */
+.b-grass    {background: #78C850;}
+.b-bug      {background: #2CDAB1;}
+.b-fire     {background: #F7786B;}
+.b-water    {background: #58ABF6;}
+.b-fighting {background: #FA6555;}
+.b-normal   {background: #A8A878;}
+.b-electric {background: #FFCE4B;}
+.b-psychic  {background: #EE99AC;}
+.b-poison   {background: #9F5BBA;}
+.b-ghost    {background: #7C538C;}
+.b-ground   {background: #51382E;}
+.b-rock     {background: #CA8179;}
+.b-dark     {background: #303943;}
+.b-dragon   {background: #D07038F8;}
+.b-fairy    {background: #F85888;}
+.b-flying   {background: #A890F0;}
+.b-ice      {background: #98D8D8;}
+.b-steel    {background: #64303943;}
+
+.b-grass .nav-link    {color: #78C850}
+.b-bug .nav-link      {color: #2CDAB1}
+.b-fire .nav-link     {color: #F7786B}
+.b-water .nav-link    {color: #58ABF6}
+.b-fighting .nav-link {color: #FA6555}
+.b-normal .nav-link   {color: #A8A878}
+.b-electric .nav-link {color: #FFCE4B}
+.b-psychic .nav-link  {color: #EE99AC}
+.b-poison .nav-link   {color: #9F5BBA}
+.b-ghost .nav-link    {color: #7C538C}
+.b-ground .nav-link   {color: #51382E}
+.b-rock .nav-link     {color: #CA8179}
+.b-dark .nav-link     {color: #303943}
+.b-dragon .nav-link   {color: #D07038F8}
+.b-fairy .nav-link    {color: #F85888}
+.b-flying .nav-link   {color: #A890F0}
+.b-ice .nav-link      {color: #98D8D8}
+
+.b-grass .nav-link.active    {background: #78C850}
+.b-bug .nav-link.active      {background: #2CDAB1}
+.b-fire .nav-link.active     {background: #F7786B}
+.b-water .nav-link.active    {background: #58ABF6}
+.b-fighting .nav-link.active {background: #FA6555}
+.b-normal .nav-link.active   {background: #A8A878}
+.b-electric .nav-link.active {background: #FFCE4B}
+.b-psychic .nav-link.active  {background: #EE99AC}
+.b-poison .nav-link.active   {background: #9F5BBA}
+.b-ghost .nav-link.active    {background: #7C538C}
+.b-ground .nav-link.active   {background: #51382E}
+.b-rock .nav-link.active     {background: #CA8179}
+.b-dark .nav-link.active     {background: #303943}
+.b-dragon .nav-link.active   {background: #D07038F8}
+.b-fairy .nav-link.active    {background: #F85888}
+.b-flying .nav-link.active   {background: #A890F0}
+.b-ice .nav-link.active      {background: #98D8D8}
+.b-steel .nav-link.active    {background: #64303943}
+
+.b-grass .progress-bar    {background: #78C850}
+.b-bug .progress-bar      {background: #2CDAB1}
+.b-fire .progress-bar     {background: #F7786B}
+.b-water .progress-bar    {background: #58ABF6}
+.b-fighting .progress-bar {background: #FA6555}
+.b-normal .progress-bar   {background: #A8A878}
+.b-electric .progress-bar {background: #FFCE4B}
+.b-psychic .progress-bar  {background: #EE99AC}
+.b-poison .progress-bar   {background: #9F5BBA}
+.b-ghost .progress-bar    {background: #7C538C}
+.b-ground .progress-bar   {background: #51382E}
+.b-rock .progress-bar     {background: #CA8179}
+.b-dark .progress-bar     {background: #303943}
+.b-dragon .progress-bar   {background: #D07038F8}
+.b-fairy .progress-bar    {background: #F85888}
+.b-flying .progress-bar   {background: #A890F0}
+.b-ice .progress-bar      {background: #98D8D8}
+.b-steel .progress-bar    {background: #64303943}
+
+/* Scroll */
+.poke-cards::-webkit-scrollbar, 
+#pokemon-detail::-webkit-scrollbar {
+    width: 8px;
+}
+.poke-cards::-webkit-scrollbar-thumb, 
+#pokemon-detail::-webkit-scrollbar-thumb {
+    background: #fff;
+    border-radius: 4px;
+}
+.poke-cards::-webkit-scrollbar-track, 
+#pokemon-detail::-webkit-scrollbar-track {
+    background: #fff;
+    border-radius: 4px;
+}
+.poke-cards:hover::-webkit-scrollbar-thumb, 
+#pokemon-detail:hover::-webkit-scrollbar-thumb {
+    background: #ccc;
+}

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokédex</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="pokedex.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="pokedex" class="row">
+        <!-- Pokemon List -->
+        <div class="col-xl-9" id="pokemon-list">
+            <!-- Search -->
+            <div class="col-xl-12 p-0 mb-3">
+                <input type="text" class="form-control" v-model="search" placeholder="Search Pokémon . . .">
+            </div>
+            <ul class="col-xl-12 poke-cards">
+                <li class="col-xl-3 col-lg-6" v-for="poke in filterPokemon">
+                    <!-- Card -->
+                    <div v-bind:class="getCardColor(poke)" v-on:click="selectPokemon(poke)">
+
+                        <!-- Info -->
+                        <div class="position-absolute">
+                            <h3>{{poke.name}}</h3>
+                            <span>{{poke.id}}</span>
+                            <br>
+                            <span v-for="type in poke.typeofpokemon" class="badge badge-light mr-1">{{type}}</span>
+                        </div>
+
+                        <!-- Img -->
+                        <div class="float-right">
+                            <img src="assets/img/pokeball.png" class="bg-pokeball"/>
+                            <img 
+                                v-bind:src="poke.imageurl"
+                                class="img-pokemon"
+                            />
+                        </div>
+
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="col-xl-3 p-0" id="pokemon-detail">
+            <div v-bind:class="getCardColor(selectedPokemon)" v-if="selectedPokemon != null">
+                <div class="pokemon-header">
+                    <h1>{{selectedPokemon.name}}</h1>
+                    <span>{{selectedPokemon.id}}</span>
+                    <br>
+                    <span v-for="type in selectedPokemon.typeofpokemon" class="badge badge-light mr-1 mt-3">{{type}}</span>
+                    <div class="d-flex justify-content-center align-items-center">
+                        <img v-bind:src="selectedPokemon.imageurl" class="img-pokemon-high"/>
+                    </div>
+                </div>
+                <div class="tabs-content">
+                    <ul class="nav nav-pills d-flex justify-content-center align-items-center" role="tablist">
+                        <li class="nav-item">
+                          <a class="nav-link active" href="#about" data-toggle="pill">About</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="#basestats" data-toggle="pill">Base Stats</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="#evolution" data-toggle="pill">Evolution</a>
+                        </li>
+                    </ul>
+
+                    <div class="tab-content text-dark">
+                        <!-- About -->
+                        <div class="tab-pane fade show active" id="about">
+                            <br>
+                            <p>{{selectedPokemon.xdescription}}</p>
+
+                            <hr/>
+
+                            <h3>Breeding</h3>
+                            <div class="pl-2">
+                                <p><b>Height:</b> {{selectedPokemon.height}}</p>
+                                <p><b>Weight:</b> {{selectedPokemon.weight}}</p>
+                                <p><b>Male:</b> {{selectedPokemon.male_percentage}}</p>
+                                <p><b>Female:</b> {{selectedPokemon.female_percentage}}</p>
+                                <p><b>Egg Cycle:</b> {{selectedPokemon.cycles}}</p>
+                                <p><b>Base Exp:</b> {{selectedPokemon.base_exp}}</p>
+                            </div>
+
+
+                        </div>
+                        <!-- Stats -->
+                        <div class="tab-pane fade" id="basestats">
+                            <div v-for="(value, name) in selectedPokemon.stats">
+                                <br>
+                                <span>{{name}}</span>
+                                <span class="float-right">{{value}}</span>
+                                <div class="progress">
+                                    <div class="progress-bar" v-bind:style="{width: value + '%'}">
+                                      <span class="sr-only">70% Complete</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Evolution -->
+                        <div class="tab-pane fade" id="evolution">
+                            <br>
+
+                            <div class="row d-flex justify-content-center align-items-center mb-4" v-for="evolution in chainEvolution">
+                                <img v-bind:src="evolution.current.imageurl" height="100"/>
+
+                                <span class="evolution-reason"><b>{{evolution.next.reason}}</b></span>
+
+                                <img v-bind:src="evolution.next.imageurl" height="100"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="pokedex.js"></script>
+</body>
+</html>
