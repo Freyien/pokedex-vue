@@ -35,14 +35,14 @@ var vuePokemon = new Vue({
             let chainEvolution = [];
             let evolutions = [];
 
-            // Obtener los Pokémon
+            // Get pokemon
             this.selectedPokemon.evolutions.forEach(evolutionId => {
                 let evolutionPokemon = this.pokemonList.filter(pokemon => pokemon.id == evolutionId)[0];
                 if (evolutionPokemon)
                     evolutions.push(evolutionPokemon);
             });
             
-
+            // Get evolution chain
             for (let index = 0; index < evolutions.length - 1; index++) {
                 let chain = {
                     current: evolutions.filter(evolution => evolution.id == evolutions[index + 1].evolvedfrom)[0],
